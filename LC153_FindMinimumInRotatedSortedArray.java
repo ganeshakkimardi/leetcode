@@ -1,6 +1,4 @@
-package practise.src.main.java.leetCode;
-
-import java.util.Arrays;
+package practise.leetCode;
 
 public class LC153_FindMinimumInRotatedSortedArray {
     public static void main(String[] args) {

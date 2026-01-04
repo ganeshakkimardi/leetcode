@@ -1,4 +1,4 @@
-package practise.src.main.java.leetCode;
+package practise.leetCode;
 
 
 public class LC8_StringToInteger {

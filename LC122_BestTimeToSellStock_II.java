@@ -14,7 +14,7 @@
 //Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
 //Total profit is 4 + 3 = 7.
 
-package practise.src.main.java.leetCode;
+package practise.leetCode;
 
 public class LC122_BestTimeToSellStock_II {
 	public static void main(String[] args) {

@@ -1,6 +1,4 @@
-package practise.src.main.java.leetCode;
-
-import static javax.swing.Spring.height;
+package practise.leetCode;
 
 public class LC11_Container_With_Most_Water {
     public static void main(String[] args) {

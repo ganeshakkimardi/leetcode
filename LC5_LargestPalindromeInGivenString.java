@@ -1,4 +1,4 @@
-package practise.src.main.java.leetCode;
+package practise.leetCode;
 
 public class LC5_LargestPalindromeInGivenString {
     public static void main(String[] args) {

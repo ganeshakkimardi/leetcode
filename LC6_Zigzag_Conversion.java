@@ -1,4 +1,4 @@
-package practise.src.main.java.leetCode;
+package practise.leetCode;
 
 public class LC6_Zigzag_Conversion {
     public static void main(String[] args) {

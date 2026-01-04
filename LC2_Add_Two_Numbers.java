@@ -1,10 +1,5 @@
-package practise.src.main.java.leetCode;
+package practise.leetCode;
 
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class LC2_Add_Two_Numbers {
     public static void main(String[] args) {
