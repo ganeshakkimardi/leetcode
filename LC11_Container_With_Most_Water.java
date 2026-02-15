@@ -7,15 +7,21 @@ public class LC11_Container_With_Most_Water {
     }
 
     private static int maxArea(int[] height) {
-        int area = 0, minHeight = 0, left = 0,  right = height.length - 1;
+        int maxArea = 0;
+        int left = 0, right = height.length - 1;
+        int minHeight, width, area;
+        while(left < right) {
+            minHeight = Math.min(height[left], height[right]);
+            width = right - left;
+            area = minHeight * width;
 
-        while (left < right) {
-            minHeight = Math.min(height[right], height[left]);
-            area = Math.max(area, minHeight * (right - left));
+            maxArea = Math.max(area, maxArea);
 
-            while (left < right && minHeight >= height[left]) left++;
-            while (left < right && minHeight >= height[right]) right--;
+            if(height[left] < height[right])
+                left++;
+            else
+                right--;
         }
-        return area;
+        return maxArea;
     }
 }
