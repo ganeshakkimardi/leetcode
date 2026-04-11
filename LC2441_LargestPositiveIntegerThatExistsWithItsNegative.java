@@ -1,6 +1,7 @@
 package practise.leetCode;
 
-import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class LC2441_LargestPositiveIntegerThatExistsWithItsNegative {
     public static void main(String[] args) {
@@ -8,20 +9,17 @@ public class LC2441_LargestPositiveIntegerThatExistsWithItsNegative {
         System.out.println(findMaxK(nums));
     }
     public static int findMaxK(int[] nums) {
-        Arrays.sort(nums);
-        int i = 0, j = nums.length - 1;
+        Set<Integer> set = new HashSet<>();
 
-        while (i < j && nums[i] < 0 && nums[j] > 0) {
-            int sum = nums[i] + nums[j];
-
-            if (sum == 0) {
-                return nums[j];
-            } else if (sum < 0) {
-                i++;
-            } else {
-                j--;
+        for(int num : nums) {
+            set.add(num);
+        }
+        int max = -1;
+        for(int num : nums) {
+            if(num > 0 && set.contains(-num)) {
+                max = Math.max(max, num);
             }
         }
-        return -1;
+        return max;
     }
 }
