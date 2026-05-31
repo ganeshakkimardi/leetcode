@@ -4,30 +4,31 @@ import java.util.Arrays;
 
 public class LC875_KokoEatingBananas {
     public static void main(String[] args) {
-        int[] piles = {805306368,805306368,805306368};
-        int h = 1000000000;
+        int[] piles = {3,6,7,11};
+        int h = 8;
         System.out.println(minEatingSpeed(piles, h));
     }
 
     public static int minEatingSpeed(int[] piles, int h) {
-        int min = 1, max = Arrays.stream(piles).max().getAsInt();
-        int ans = max;
-        while (min <= max) {
-            int mid = (min + max) / 2;
-            long hours = 0;
+        int left = 1, right = 0;
 
-            for (int pile : piles) {
-                hours = hours + (pile + mid - 1) / mid;
-            }
+        for(int pile : piles)
+            right = Math.max(right, pile);
 
-            if (hours <= h) {
-                ans = mid;
-                max = mid - 1;
-            } else {
-                min = mid + 1;
-            }
+        while (left < right) {
+            int mid = (left + right) / 2;
+
+            int hours = 0;
+
+            for (int pile : piles)
+                hours += (pile + mid - 1) / mid; // ceil(a / b) , - 1 cos take ex of 8 , 4
+
+            if (hours <= h)
+                right = mid;
+            else
+                left = mid + 1;
         }
-        return ans;
+        return left;
     }
 
 }
