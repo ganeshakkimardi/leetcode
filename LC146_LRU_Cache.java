@@ -1,4 +1,4 @@
-package practise.leetCode.pushedToGit;
+package practise.leetCode;
 
 import java.util.*;
 
