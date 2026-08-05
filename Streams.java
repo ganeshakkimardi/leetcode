@@ -128,7 +128,7 @@ public class Streams {
                 new Employee(105, "James", 85000, Department.SALES, 32),
                 new Employee(106, "Olivia", 95000, Department.IT, 27),
                 new Employee(107, "Michael", 70000, Department.HR, 29),
-                new Employee(108, "William", 110000, Department.FINANCE, 45),
+                new Employee(108, "William", 120000, Department.FINANCE, 45),
                 new Employee(109, "Ava", 60000, Department.ADMIN, 26),
                 new Employee(110, "Lucas", 80000, Department.SALES, 33)
 
@@ -141,6 +141,12 @@ public class Streams {
 
         System.out.println("employee with highest salary");
         System.out.println(employees.stream().max(Comparator.comparing(Employee::getSalary)).map(Employee::getName).get());
+
+        System.out.println("employee with second highest salary");
+        System.out.println(employees.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).skip(1).findFirst().get());
+
+        System.out.println("employee with second highest distinct salary");
+        System.out.println(employees.stream().map(Employee::getSalary).distinct().sorted(Comparator.reverseOrder()).skip(1).findFirst().get());
 
         System.out.println("group by dept");
         Map<Department, List<Employee>> deptMap = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));
