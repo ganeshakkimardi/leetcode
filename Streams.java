@@ -1,5 +1,6 @@
 package practise.leetCode;
 
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -85,11 +86,14 @@ public class Streams {
         String str = "pprogramming";
         System.out.println("frequency of each characters in string");
         Map<Character, Long> map = str.chars().mapToObj(c -> (char) c).collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+        System.out.println(map.values());
+        Map<Character, Long> map1 = str.chars().mapToObj(c -> (char)c).collect(Collectors.groupingBy(Function.identity(), LinkedHashMap :: new, Collectors.counting()));
+
         System.out.println(map);
 
         System.out.println("first non repetitive character");
         java.lang.Character result = str.chars().mapToObj(c -> (char) c).collect(Collectors.groupingBy(Function.identity(), LinkedHashMap:: new, Collectors.counting()))
-                .entrySet().stream().filter(e -> e.getValue() == 1).map(Map.Entry::getKey).findFirst().orElse(null);
+                .entrySet().stream().filter(e -> e.getValue() == 1).map(m -> m.getKey()).findFirst().orElse(null);
         System.out.println(result);
 
         System.out.println("duplicates");
@@ -151,6 +155,9 @@ public class Streams {
         System.out.println("group by dept");
         Map<Department, List<Employee>> deptMap = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));
         System.out.println(deptMap);
+
+        System.out.println("Group By Department and highest salary in department");
+        System.out.println(employees.stream().collect(Collectors.groupingBy(Employee :: getDepartment, Collectors.maxBy(Comparator.comparing(Employee::getSalary)))));
 
         System.out.println("Partition Numbers into Even and Odd");
         Map<Boolean, List<Integer>> result2 = numbers.stream().collect(Collectors.partitioningBy(n -> n % 2 == 0));
